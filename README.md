@@ -24,15 +24,6 @@ External Requirements:
 
 ### Install Configuration
 
-Neovim's configurations are located under the following paths, depending on your OS:
-
-| OS | PATH |
-| :- | :--- |
-| Linux, MacOS | `$XDG_CONFIG_HOME/nvim`, `~/.config/nvim` |
-| Windows (cmd)| `%localappdata%\nvim\` |
-| Windows (powershell)| `$env:LOCALAPPDATA\nvim\` |
-
-
 ```sh
 git clone https://github.com/astralcai/my-nvim-config.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
 ```

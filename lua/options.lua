@@ -65,3 +65,14 @@ vim.o.scrolloff = 10
 -- instead raise a dialog asking if you wish to save the current file(s)
 -- See `:help 'confirm'`
 vim.o.confirm = true
+
+-- Configure tabs
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'c', 'cpp', 'lua' },
+  callback = function()
+    vim.bo.tabstop = 2
+    vim.bo.shiftwidth = 2
+    vim.bo.softtabstop = 2
+    vim.bo.expandtab = true
+  end,
+})

@@ -1,5 +1,6 @@
 require("options")
 require("keymaps")
+require("autocmds")
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -24,6 +25,4 @@ require("lazy").setup({
 		-- import your plugins
 		{ import = "plugins" },
 	},
-	-- automatically check for plugin updates
-	checker = { enabled = true },
 })

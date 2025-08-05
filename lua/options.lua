@@ -71,13 +71,3 @@ vim.o.undofile = true
 
 -- Decrease mapped sequence wait time
 vim.o.timeoutlen = 300
-
--- [[ Basic Autocommands]]
-
--- Highlight yanked text.
-vim.api.nvim_create_autocmd("TextYankPost", {
-	group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
-	callback = function()
-		vim.hl.on_yank()
-	end,
-})

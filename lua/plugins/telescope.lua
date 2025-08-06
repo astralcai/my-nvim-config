@@ -10,7 +10,7 @@ return {
 		-- Set up telescope and extensions
 		require("telescope").setup({})
 		require("telescope").load_extension("fzf")
-		require("telescope").load_extension("frequency")
+		require("telescope").load_extension("frecency")
 		local builtin = require("telescope.builtin")
 
 		-- Custom functions

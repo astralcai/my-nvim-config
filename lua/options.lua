@@ -35,7 +35,7 @@ vim.o.inccommand = "split"
 
 -- Sets how neovim will display certain whitespace characters in the editor.
 vim.o.list = true
-vim.o.listchars = { tab = "» ", trail = "·" }
+vim.opt.listchars = { tab = "» ", trail = "·" }
 
 -- Use OS clipboard for Neovim.
 vim.o.clipboard = "unnamedplus"

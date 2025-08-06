@@ -8,10 +8,6 @@ return {
         comments = {},
         conditionals = {},
       },
-      background = {
-        light = "latte",
-        dark = "macchiato",
-      },
       auto_integrations = true,
     })
     vim.cmd.colorscheme("catppuccin")

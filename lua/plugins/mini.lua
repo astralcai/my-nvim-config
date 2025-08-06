@@ -7,6 +7,5 @@ return {
     require("mini.move").setup({})
     require("mini.pairs").setup({})
     require("mini.surround").setup({})
-    require("mini.statusline").setup({})
   end,
 }

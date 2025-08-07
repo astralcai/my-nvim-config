@@ -12,6 +12,7 @@ return {
         dashboard = false,
         fidget = false,
         neotree = false,
+        neotest = false,
         mason = false,
         telescope = { enabled = false },
         which_key = false,

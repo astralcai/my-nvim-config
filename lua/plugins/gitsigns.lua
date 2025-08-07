@@ -32,26 +32,24 @@ return {
       end)
 
       -- Actions
-      map("n", "<leader>hs", gitsigns.stage_hunk, { desc = "[S]tage [H]unk" })
-      map("n", "<leader>hr", gitsigns.reset_hunk, { desc = "[R]eset [H]unk" })
+      map("n", "<leader>gs", gitsigns.stage_hunk, { desc = "[G]it [S]tage" })
+      map("n", "<leader>gr", gitsigns.reset_hunk, { desc = "[G]it [R]eset" })
+      map("n", "<leader>gp", gitsigns.preview_hunk, { desc = "[G]it [P]review Hunk" })
 
-      map("v", "<leader>hs", function()
+      map("v", "<leader>gs", function()
         gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
-      end, { desc = "[S]tage [H]unk" })
+      end, { desc = "[G]it [S]tage" })
 
-      map("v", "<leader>hr", function()
+      map("v", "<leader>gr", function()
         gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
-      end, { desc = "[R]eset [H]unk" })
+      end, { desc = "[G]it [R]eset" })
 
-      map("n", "<leader>hS", gitsigns.stage_buffer, { desc = "[S]tage Buffer" })
-      map("n", "<leader>hR", gitsigns.reset_buffer, { desc = "[R]eset Buffer" })
+      map("n", "<leader>gS", gitsigns.stage_buffer, { desc = "[G]it [S]tage Buffer" })
+      map("n", "<leader>gR", gitsigns.reset_buffer, { desc = "[G]it [R]eset Buffer" })
 
-      map("n", "<leader>hb", function()
-        gitsigns.blame_line({ full = true })
-      end, { desc = "[B]lame Line" })
-
-      -- Toggles
-      map("n", "<leader>tb", gitsigns.toggle_current_line_blame, { desc = "[T]oggle [B]lame" })
+      -- Git Blames
+      map("n", "<leader>gb", gitsigns.toggle_current_line_blame, { desc = "[G]it [B]lame Line" })
+      map("n", "<leader>gB", gitsigns.blame, { desc = "[G]it [B]lame" })
 
       -- Text object
       map({ "o", "x" }, "ih", gitsigns.select_hunk)

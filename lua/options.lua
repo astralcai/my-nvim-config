@@ -1,78 +1,73 @@
--- Set <space> as the leader key
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+-- [[ Basic Options ]]
 
--- Python
-vim.g.python3_host_prog = '~/.pyenv/shims/python'
+-- Set <space> as the leader key
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
+-- Set Python location
+vim.g.python3_host_prog = "~/.pyenv/shims/python"
 
 -- Use nerd font
 vim.g.have_nerd_font = true
 
--- [[ Setting options ]]
-
--- Make line numbers default
+-- Line numbers
 vim.o.number = true
 vim.o.relativenumber = true
 
--- Enable mouse mode, can be useful for resizing splits for example!
-vim.o.mouse = 'a'
-
--- Don't show the mode, since it's already in the status line
-vim.o.showmode = false
-
--- Sync clipboard between OS and Neovim.
-vim.schedule(function()
-  vim.o.clipboard = 'unnamedplus'
-end)
-
--- Enable break indent
+-- Wrapped lines have the same indentation
 vim.o.breakindent = true
 
--- Save undo history
-vim.o.undofile = true
+-- Highlight the line that the cursor is on
+vim.o.cursorline = true
 
--- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
+-- Use OS clipboard in Neovim.
+vim.o.clipboard = "unnamedplus"
+
+-- Ask confirmation to save current buffer before quitting
+vim.o.confirm = true
+
+-- Ignore case in search patterns
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
--- Keep signcolumn on by default
-vim.o.signcolumn = 'yes'
+-- Preview substitutions live
+vim.o.inccommand = "split"
+
+-- Sets how neovim will display certain whitespace characters in the editor.
+vim.o.list = true
+vim.opt.listchars = { tab = "» ", trail = "·" }
+
+-- Use OS clipboard for Neovim.
+vim.o.clipboard = "unnamedplus"
+
+-- Use spaces instead of tabs
+vim.o.expandtab = true
+
+-- Set default tab width
+vim.o.shiftwidth = 4
+vim.o.tabstop = 4
+
+-- Enable mouse support
+vim.o.mouse = "a"
+
+-- Minimal number of lines to keep above and below the cursor
+vim.o.scrolloff = 10
+
+-- Do not show mode
+vim.o.showmode = false
+
+-- Keep signcolumn on
+vim.o.signcolumn = "yes"
+
+-- Default position of split windows
+vim.o.splitbelow = true
+vim.o.splitright = true
 
 -- Decrease update time
 vim.o.updatetime = 250
 
+-- Save undo history
+vim.o.undofile = true
+
 -- Decrease mapped sequence wait time
 vim.o.timeoutlen = 300
-
--- Configure how new splits should be opened
-vim.o.splitright = true
-vim.o.splitbelow = true
-
--- Sets how neovim will display certain whitespace characters in the editor.
-vim.o.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
-
--- Preview substitutions live, as you type!
-vim.o.inccommand = 'split'
-
--- Show which line your cursor is on
-vim.o.cursorline = true
-
--- Minimal number of screen lines to keep above and below the cursor.
-vim.o.scrolloff = 10
-
--- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
--- instead raise a dialog asking if you wish to save the current file(s)
--- See `:help 'confirm'`
-vim.o.confirm = true
-
--- Configure tabs
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'c', 'cpp', 'lua' },
-  callback = function()
-    vim.bo.tabstop = 2
-    vim.bo.shiftwidth = 2
-    vim.bo.softtabstop = 2
-    vim.bo.expandtab = true
-  end,
-})

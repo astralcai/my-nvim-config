@@ -8,6 +8,7 @@ return {
       { "<leader>t", group = "[T]est" },
       { "<leader>g", group = "[G]it", mode = { "n", "v" } },
       { "<leader>d", group = "[D]ebug" },
+      { "<leader>x", group = "Trouble" },
     },
   },
   keys = {

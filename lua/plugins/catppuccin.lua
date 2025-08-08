@@ -13,17 +13,7 @@ return {
         dap = false,
         dap_ui = false,
         fidget = false,
-        neotree = false,
-        neotest = false,
-        mason = false,
-        telescope = { enabled = false },
-        which_key = false,
         gitsigns = false,
-        treesitter = false,
-        treesitter_context = false,
-        mini = {
-          enabled = false,
-        },
         native_lsp = {
           enabled = false,
           virtual_text = {
@@ -44,6 +34,14 @@ return {
             background = true,
           },
         },
+        mini = { enabled = false },
+        neotree = false,
+        neotest = false,
+        mason = false,
+        telescope = { enabled = false },
+        treesitter = false,
+        treesitter_context = false,
+        which_key = false,
       },
     })
     vim.cmd.colorscheme("catppuccin")

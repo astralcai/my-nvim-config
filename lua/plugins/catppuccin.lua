@@ -10,6 +10,8 @@ return {
       },
       integrations = {
         dashboard = false,
+        dap = false,
+        dap_ui = false,
         fidget = false,
         neotree = false,
         neotest = false,

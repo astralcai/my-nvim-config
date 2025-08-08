@@ -26,5 +26,8 @@ return {
     vim.keymap.set("n", "<leader>ts", neotest.summary.toggle, { desc = "Toggle [T]est [S]ummary" })
     vim.keymap.set("n", "<leader>to", neotest.output_panel.toggle, { desc = "Toggle [T]est [O]utput" })
     vim.keymap.set("n", "<leader>tc", neotest.output_panel.clear, { desc = "[C]lear Outout" })
+    vim.keymap.set("n", "<leader>dt", function()
+      neotest.run.run({ strategy = "dap" })
+    end, { desc = "[D]ebug [T]est" })
   end,
 }

@@ -7,6 +7,7 @@ return {
       { "<leader>s", group = "[S]earch" },
       { "<leader>t", group = "[T]est" },
       { "<leader>g", group = "[G]it", mode = { "n", "v" } },
+      { "<leader>d", group = "[D]ebug" },
     },
   },
   keys = {

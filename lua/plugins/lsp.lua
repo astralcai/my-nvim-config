@@ -19,16 +19,16 @@ return {
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("LspAttach", { clear = true }),
       callback = function(event)
-        local telescope = require("telescope.builtin")
+        local fzf = require("fzf-lua")
         vim.keymap.set("n", "grn", vim.lsp.buf.rename, { desc = "[R]e[n]ame" })
         vim.keymap.set({ "n", "v" }, "gra", vim.lsp.buf.code_action, { desc = "[G]oto Code [A]ction" })
-        vim.keymap.set("n", "grr", telescope.lsp_references, { desc = "[G]oto [R]eferences" })
-        vim.keymap.set("n", "gri", telescope.lsp_implementations, { desc = "[G]oto [I]mplementation" })
-        vim.keymap.set("n", "grt", telescope.lsp_type_definitions, { desc = "[G]oto [T]ype Definition" })
-        vim.keymap.set("n", "grd", telescope.lsp_definitions, { desc = "[G]oto [D]efinition" })
+        vim.keymap.set("n", "grr", fzf.lsp_references, { desc = "[G]oto [R]eferences" })
+        vim.keymap.set("n", "gri", fzf.lsp_implementations, { desc = "[G]oto [I]mplementation" })
+        vim.keymap.set("n", "grt", fzf.lsp_typedefs, { desc = "[G]oto [T]ype Definition" })
+        vim.keymap.set("n", "grd", fzf.lsp_definitions, { desc = "[G]oto [D]efinition" })
         vim.keymap.set("n", "grD", vim.lsp.buf.declaration, { desc = "[G]oto [D]eclaration" })
-        vim.keymap.set("n", "gO", telescope.lsp_document_symbols, { desc = "[O]pen Document Symbols" })
-        vim.keymap.set("n", "gw", telescope.lsp_dynamic_workspace_symbols, { desc = "Open [W]orkspace Symbols" })
+        vim.keymap.set("n", "so", fzf.lsp_document_symbols, { desc = "[S]earch Document Symbols" })
+        vim.keymap.set("n", "sw", fzf.lsp_live_workspace_symbols, { desc = "[S]earch [W]orkspace Symbols" })
 
         -- Diagnostic Config
         vim.diagnostic.config({

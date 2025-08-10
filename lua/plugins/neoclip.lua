@@ -1,8 +1,8 @@
 return {
   "AckslD/nvim-neoclip.lua",
-  dependencies = { "nvim-telescope/telescope.nvim" },
+  dependencies = { "ibhagwan/fzf-lua" },
   config = function()
     require("neoclip").setup()
-    vim.keymap.set("n", "<leader>sc", "<cmd>Telescope neoclip<cr>", { desc = "[S]earch [C]lipboard" })
+    vim.keymap.set("n", "<leader>sc", require("neoclip.fzf"), { desc = "[S]earch [C]lipboard" })
   end,
 }

@@ -39,7 +39,6 @@ return {
         neotree = false,
         neotest = false,
         mason = false,
-        telescope = { enabled = false },
         treesitter = false,
         treesitter_context = false,
         which_key = false,

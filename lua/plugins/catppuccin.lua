@@ -13,6 +13,7 @@ return {
         dap = false,
         dap_ui = false,
         fidget = false,
+        fzf = false,
         gitsigns = false,
         native_lsp = {
           enabled = false,

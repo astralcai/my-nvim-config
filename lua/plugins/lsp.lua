@@ -56,7 +56,7 @@ return {
         settings = {
           python = {
             analysis = {
-              exclude = { "build" },
+              exclude = { "build", "venv" },
             },
           },
         },

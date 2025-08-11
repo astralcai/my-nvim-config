@@ -1,10 +1,10 @@
 return {
   "ibhagwan/fzf-lua",
   dependencies = { "nvim-tree/nvim-web-devicons" },
-  opts = { "telescope" },
   config = function()
     -- Configure keymaps
     local fzf = require("fzf-lua")
+    fzf.setup({ "telescope" })
     fzf.register_ui_select()
     vim.keymap.set("n", "<leader>sh", fzf.help_tags, { desc = "[S]earch [H]elp" })
     vim.keymap.set("n", "<leader>sk", fzf.keymaps, { desc = "[S]earch [K]eymaps" })

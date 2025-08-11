@@ -8,6 +8,7 @@ return {
         week_header = {
           enable = true,
         },
+        project = { action = 'FzfLua files cwd=' }
       },
     })
   end,

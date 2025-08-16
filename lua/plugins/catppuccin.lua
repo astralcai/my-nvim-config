@@ -8,41 +8,7 @@ return {
         comments = {},
         conditionals = {},
       },
-      integrations = {
-        dashboard = false,
-        dap = false,
-        dap_ui = false,
-        fidget = false,
-        fzf = false,
-        gitsigns = false,
-        native_lsp = {
-          enabled = false,
-          virtual_text = {
-            errors = { "italic" },
-            hints = { "italic" },
-            warnings = { "italic" },
-            information = { "italic" },
-            ok = { "italic" },
-          },
-          underlines = {
-            errors = { "underline" },
-            hints = { "underline" },
-            warnings = { "underline" },
-            information = { "underline" },
-            ok = { "underline" },
-          },
-          inlay_hints = {
-            background = true,
-          },
-        },
-        mini = { enabled = false },
-        neotree = false,
-        neotest = false,
-        mason = false,
-        treesitter = false,
-        treesitter_context = false,
-        which_key = false,
-      },
+      auto_integrations = true,
     })
     vim.cmd.colorscheme("catppuccin")
   end,

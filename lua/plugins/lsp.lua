@@ -27,8 +27,8 @@ return {
         vim.keymap.set("n", "grt", fzf.lsp_typedefs, { desc = "[G]oto [T]ype Definition" })
         vim.keymap.set("n", "grd", fzf.lsp_definitions, { desc = "[G]oto [D]efinition" })
         vim.keymap.set("n", "grD", vim.lsp.buf.declaration, { desc = "[G]oto [D]eclaration" })
-        vim.keymap.set("n", "so", fzf.lsp_document_symbols, { desc = "[S]earch Document Symbols" })
-        vim.keymap.set("n", "sw", fzf.lsp_live_workspace_symbols, { desc = "[S]earch [W]orkspace Symbols" })
+        vim.keymap.set("n", "<leader>so", fzf.lsp_document_symbols, { desc = "[S]earch Document Symbols" })
+        vim.keymap.set("n", "<leader>sw", fzf.lsp_live_workspace_symbols, { desc = "[S]earch [W]orkspace Symbols" })
 
         -- Diagnostic Config
         vim.diagnostic.config({

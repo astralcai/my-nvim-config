@@ -7,6 +7,7 @@ return {
     "mfussenegger/nvim-dap-python",
     "mason-org/mason.nvim",
     "jay-babu/mason-nvim-dap.nvim",
+    "debugloop/layers.nvim",
   },
   config = function()
     -- Setup
@@ -35,11 +36,6 @@ return {
     vim.keymap.set("n", "<leader>B", function()
       dap.set_breakpoint(vim.fn.input("Condition: "))
     end, { desc = "Conditional [B]reakooint" })
-    vim.keymap.set("n", "<leader>d<Down>", dap.step_over, { desc = "Debug: Step Over" })
-    vim.keymap.set("n", "<leader>d<Right>", dap.step_into, { desc = "Debug: Step Into" })
-    vim.keymap.set("n", "<leader>d<Left>", dap.step_out, { desc = "Debug: Step Out" })
-    vim.keymap.set("n", "<leader>dc", dap.continue, { desc = "Debug: Continue" })
-    vim.keymap.set("n", "<leader>dT", dap.terminate, { desc = "Debug: Terminate" })
 
     -- Change breakpoint icons
     vim.api.nvim_set_hl(0, "DapBreak", { fg = "#e51400" })
@@ -56,5 +52,44 @@ return {
       local hl = (type == "Stopped") and "DapStop" or "DapBreak"
       vim.fn.sign_define(tp, { text = icon, texthl = hl, numhl = hl })
     end
+
+    -- Configure temporary keymaps
+    local layers = require("layers")
+    DEBUG_MODE = layers.mode.new()
+    dap.listeners.after.event_initialized["debug_mode"] = function()
+      DEBUG_MODE:activate()
+    end
+    dap.listeners.before.event_exited["debug_mode"] = function()
+      DEBUG_MODE:deactivate()
+    end
+    DEBUG_MODE:keymaps({
+      n = {
+        {
+          "<Down>",
+          dap.step_over,
+          { desc = "Debug: Step Over" },
+        },
+        {
+          "<Right>",
+          dap.step_into,
+          { desc = "Debug: Step Into" },
+        },
+        {
+          "<Left>",
+          dap.step_out,
+          { desc = "Debug: Step Out" },
+        },
+        {
+          "T",
+          dap.terminate,
+          { desc = "Debug: Terminate" },
+        },
+        {
+          "c",
+          dap.continue,
+          { desc = "Debug: Continue" },
+        },
+      },
+    })
   end,
 }

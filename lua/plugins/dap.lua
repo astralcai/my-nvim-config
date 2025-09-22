@@ -36,6 +36,7 @@ return {
     vim.keymap.set("n", "<leader>B", function()
       dap.set_breakpoint(vim.fn.input("Condition: "))
     end, { desc = "Conditional [B]reakooint" })
+    vim.keymap.set("n", "<leader>dl", dap.continue, { desc = "[D]ebug [L]aunch" })
 
     -- Change breakpoint icons
     vim.api.nvim_set_hl(0, "DapBreak", { fg = "#e51400" })

@@ -12,9 +12,7 @@ return {
   config = function()
     -- Setup
     require("dapui").setup()
-    require("nvim-dap-virtual-text").setup({
-      virt_text_pos = "eol",
-    })
+    require("nvim-dap-virtual-text").setup({ virt_text_pos = "eol" })
     require("dap-python").setup("python")
     require("mason").setup()
     require("mason-nvim-dap").setup({ ensure_installed = { "python" }, automatic_installation = true })

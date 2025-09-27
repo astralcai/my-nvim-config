@@ -1,34 +1,30 @@
 return {
-  "mason-org/mason-lspconfig.nvim",
-  opts = {
-    ensure_installed = {
-      "pyright",
-      "clangd",
-      "jdtls",
-      "lua_ls",
-    },
-    automatic_enable = false,
-  },
+  "neovim/nvim-lspconfig",
   dependencies = {
     { "mason-org/mason.nvim", opts = {} },
-    "neovim/nvim-lspconfig",
-    { "WhoIsSethDaniel/mason-tool-installer.nvim", opts = {} },
+    "mason-org/mason-lspconfig.nvim",
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
   },
   config = function()
     -- Configure Keymaps
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("LspAttach", { clear = true }),
       callback = function(event)
+        -- Configure Keymaps
         local fzf = require("fzf-lua")
-        vim.keymap.set("n", "grn", vim.lsp.buf.rename, { desc = "[R]e[n]ame" })
-        vim.keymap.set({ "n", "v" }, "gra", vim.lsp.buf.code_action, { desc = "[G]oto Code [A]ction" })
-        vim.keymap.set("n", "grr", fzf.lsp_references, { desc = "[G]oto [R]eferences" })
-        vim.keymap.set("n", "gri", fzf.lsp_implementations, { desc = "[G]oto [I]mplementation" })
-        vim.keymap.set("n", "grt", fzf.lsp_typedefs, { desc = "[G]oto [T]ype Definition" })
-        vim.keymap.set("n", "grd", fzf.lsp_definitions, { desc = "[G]oto [D]efinition" })
-        vim.keymap.set("n", "grD", vim.lsp.buf.declaration, { desc = "[G]oto [D]eclaration" })
-        vim.keymap.set("n", "<leader>so", fzf.lsp_document_symbols, { desc = "[S]earch Document Symbols" })
-        vim.keymap.set("n", "<leader>sw", fzf.lsp_live_workspace_symbols, { desc = "[S]earch [W]orkspace Symbols" })
+        local map = function(key, fn, desc, mode)
+          mode = mode or "n"
+          vim.keymap.set("n", key, fn, { buffer = event.buf, desc = "LSP: " .. desc })
+        end
+        map("grn", vim.lsp.buf.rename, "[R]e[n]ame")
+        map("gra", vim.lsp.buf.code_action, "[G]oto Code [A]ction", { "n", "v" })
+        map("grr", fzf.lsp_references, "[G]oto [R]eferences")
+        map("gri", fzf.lsp_implementations, "[G]oto [I]mplementation")
+        map("grt", fzf.lsp_typedefs, "[G]oto [T]ype Definition")
+        map("grd", fzf.lsp_definitions, "[G]oto [D]efinition")
+        map("grD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+        map("<leader>so", fzf.lsp_document_symbols, "[S]earch Document Symbols")
+        map("<leader>sw", fzf.lsp_live_workspace_symbols, "[S]earch [W]orkspace Symbols")
 
         -- Diagnostic Config
         vim.diagnostic.config({
@@ -43,26 +39,25 @@ return {
               [vim.diagnostic.severity.HINT] = "󰌶 ",
             },
           } or {},
-          virtual_text = {
-            source = "if_many",
-            spacing = 2,
-          },
+          virtual_text = { source = "if_many", spacing = 2 },
         })
       end,
     })
-
+    -- LSP specific configurations
     local servers = {
+      -- Python
       pyright = {
         settings = {
           python = {
             analysis = {
-              exclude = { "build", "venv" },
+              exclude = { "venv", ".venv" },
             },
           },
         },
       },
+      -- C/C++
       clangd = {},
-      jdtls = {},
+      -- Lua
       lua_ls = {
         settings = {
           Lua = {
@@ -72,15 +67,15 @@ return {
           },
         },
       },
+      -- Java
+      jdtls = {},
     }
+    local ensure_installed = vim.tbl_keys(servers or {})
+    vim.list_extend(ensure_installed, { "ruff", "stylua" })
     for server, config in pairs(servers) do
       vim.lsp.config(server, config)
       vim.lsp.enable(server)
     end
-
-    -- Ensure the servers and tools above are installed
-    local ensure_installed = vim.tbl_keys(servers or {})
-    vim.list_extend(ensure_installed, { "stylua" })
     require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
   end,
 }

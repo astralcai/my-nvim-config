@@ -15,10 +15,7 @@ return {
   opts = {
     formatters_by_ft = {
       lua = { "stylua" },
-      python = function(bufnr)
-        local has_ruff = require("conform").get_formatter_info("ruff_format", bufnr).available
-        return has_ruff and { "ruff_organize_imports", "ruff_format" } or { "isort", "black" }
-      end,
+      python = { "ruff_organize_imports", "ruff_format" },
       toml = { "tombi" },
     },
     default_format_opts = {

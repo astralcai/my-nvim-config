@@ -55,8 +55,27 @@ return {
             },
           },
         },
+        on_attach = function(client, bufrn)
+          local capabilities = client.server_capabilities
+          capabilities.declarationProvider = false
+          capabilities.definitionProvider = false
+          capabilities.typeDefinitionProvider = false
+          capabilities.implementationProvider = false
+          capabilities.referencesProvider = false
+          capabilities.documentSymbolProvider = false
+          capabilities.workspaceSymbolProvider = false
+          capabilities.renameProvider = false
+        end,
       },
-      -- ty = {},
+      ty = {
+        on_attach = function(client, bufrn)
+          local capabilities = client.server_capabilities
+          capabilities.documentHighlightProvider = false
+          capabilities.colorProvider = false
+          capabilities.diagnosticProvider = false
+          capabilities.semanticTokensProvider = false
+        end,
+      },
       -- C/C++
       clangd = {},
       -- Lua

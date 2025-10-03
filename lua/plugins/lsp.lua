@@ -43,6 +43,7 @@ return {
         })
       end,
     })
+
     -- LSP specific configurations
     local servers = {
       -- Python
@@ -55,6 +56,7 @@ return {
           },
         },
       },
+      -- ty = {},
       -- C/C++
       clangd = {},
       -- Lua
@@ -70,8 +72,9 @@ return {
       -- Java
       jdtls = {},
     }
+
     local ensure_installed = vim.tbl_keys(servers or {})
-    vim.list_extend(ensure_installed, { "ruff", "stylua" })
+    vim.list_extend(ensure_installed, { "ruff", "stylua", "tombi" })
     for server, config in pairs(servers) do
       vim.lsp.config(server, config)
       vim.lsp.enable(server)

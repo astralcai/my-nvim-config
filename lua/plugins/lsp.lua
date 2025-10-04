@@ -60,7 +60,7 @@ return {
           capabilities.referencesProvider = false
           capabilities.documentSymbolProvider = false
           capabilities.workspaceSymbolProvider = false
-          capabilities.renameProvider = false
+          -- capabilities.renameProvider = false
         end,
       },
       ty = {

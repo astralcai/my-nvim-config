@@ -29,6 +29,15 @@ return {
     -- Configure Python
     require("dap-python").test_runner = "pytest"
 
+    -- Add a configuration that steps into not just my own code
+    table.insert(dap.configurations.python, {
+      type = "python",
+      request = "launch",
+      name = "file:allcode",
+      program = "${file}",
+      justMyCode = false,
+    })
+
     -- Configure Keymaps
     vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint, { desc = "Toggle [B]reakpoint" })
     vim.keymap.set("n", "<leader>B", function()

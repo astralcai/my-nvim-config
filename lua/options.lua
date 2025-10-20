@@ -4,9 +4,6 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Set Python location
-vim.g.python3_host_prog = "~/.pyenv/shims/python"
-
 -- Use nerd font
 vim.g.have_nerd_font = true
 

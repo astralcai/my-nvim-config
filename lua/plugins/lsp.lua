@@ -60,17 +60,9 @@ return {
           capabilities.referencesProvider = false
           capabilities.documentSymbolProvider = false
           capabilities.workspaceSymbolProvider = false
-          -- capabilities.renameProvider = false
         end,
       },
       ty = {
-        -- settings = {
-        --   ty = {
-        --     experimental = {
-        --       rename = true,
-        --     },
-        --   },
-        -- },
         on_attach = function(client, bufrn)
           local capabilities = client.server_capabilities
           capabilities.declarationProvider = false

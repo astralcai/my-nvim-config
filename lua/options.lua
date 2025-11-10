@@ -37,6 +37,9 @@ vim.opt.listchars = { tab = "» ", trail = "·" }
 -- Use OS clipboard for Neovim.
 vim.o.clipboard = "unnamedplus"
 
+-- Spell Language
+vim.o.spelllang = "en_ca"
+
 -- Use spaces instead of tabs
 vim.o.expandtab = true
 

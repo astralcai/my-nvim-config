@@ -71,7 +71,6 @@ return {
           capabilities.implementationProvider = false
           capabilities.documentHighlightProvider = false
           capabilities.colorProvider = false
-          capabilities.diagnosticProvider = false
           capabilities.semanticTokensProvider = false
         end,
       },

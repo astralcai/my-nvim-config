@@ -97,5 +97,14 @@ return {
       vim.lsp.enable(server)
     end
     require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+
+    -- Special logic to exclude ty diagnostic
+    local original_vim_diagnostic_set = vim.diagnostic.set
+    vim.diagnostic.set = function(ns, bufnr, diagnostics, opts)
+      local filtered_diagnostics = vim.tbl_filter(function(diagnostic)
+        return diagnostic.source ~= "ty"
+      end, diagnostics)
+      original_vim_diagnostic_set(ns, bufnr, filtered_diagnostics, opts)
+    end
   end,
 }

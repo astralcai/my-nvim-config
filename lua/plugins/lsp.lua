@@ -47,33 +47,7 @@ return {
     -- LSP specific configurations
     local servers = {
       -- Python
-      pyright = {
-        settings = {
-          python = {
-            analysis = {
-              exclude = { "venv", ".venv" },
-            },
-          },
-        },
-        on_attach = function(client, bufrn)
-          local capabilities = client.server_capabilities
-          capabilities.referencesProvider = false
-          capabilities.documentSymbolProvider = false
-          capabilities.workspaceSymbolProvider = false
-        end,
-      },
-      ty = {
-        on_attach = function(client, bufrn)
-          local capabilities = client.server_capabilities
-          capabilities.declarationProvider = false
-          capabilities.definitionProvider = false
-          capabilities.typeDefinitionProvider = false
-          capabilities.implementationProvider = false
-          capabilities.documentHighlightProvider = false
-          capabilities.colorProvider = false
-          capabilities.semanticTokensProvider = false
-        end,
-      },
+      ty = {},
       -- C/C++
       clangd = {},
       -- Lua
@@ -97,14 +71,5 @@ return {
       vim.lsp.enable(server)
     end
     require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
-
-    -- Special logic to exclude ty diagnostic
-    local original_vim_diagnostic_set = vim.diagnostic.set
-    vim.diagnostic.set = function(ns, bufnr, diagnostics, opts)
-      local filtered_diagnostics = vim.tbl_filter(function(diagnostic)
-        return diagnostic.source ~= "ty"
-      end, diagnostics)
-      original_vim_diagnostic_set(ns, bufnr, filtered_diagnostics, opts)
-    end
   end,
 }

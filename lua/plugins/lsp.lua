@@ -60,15 +60,16 @@ return {
           capabilities.referencesProvider = false
           capabilities.documentSymbolProvider = false
           capabilities.workspaceSymbolProvider = false
+          capabilities.declarationProvider = false
+          capabilities.definitionProvider = false
+          capabilities.typeDefinitionProvider = false
+          capabilities.implementationProvider = false
+          capabilities.renameProvider = false
         end,
       },
       ty = {
         on_attach = function(client, bufrn)
           local capabilities = client.server_capabilities
-          capabilities.declarationProvider = false
-          capabilities.definitionProvider = false
-          capabilities.typeDefinitionProvider = false
-          capabilities.implementationProvider = false
           capabilities.documentHighlightProvider = false
           capabilities.colorProvider = false
           capabilities.semanticTokensProvider = false

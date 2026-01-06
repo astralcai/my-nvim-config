@@ -64,7 +64,6 @@ return {
           capabilities.definitionProvider = false
           capabilities.typeDefinitionProvider = false
           capabilities.implementationProvider = false
-          capabilities.renameProvider = false
         end,
       },
       ty = {
@@ -73,6 +72,7 @@ return {
           capabilities.documentHighlightProvider = false
           capabilities.colorProvider = false
           capabilities.semanticTokensProvider = false
+          capabilities.renameProvider = false
         end,
       },
       -- C/C++

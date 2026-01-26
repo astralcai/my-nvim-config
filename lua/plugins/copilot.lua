@@ -14,6 +14,11 @@ return {
           toggle_auto_trigger = false,
         },
       },
+      filetypes = {
+        ["dap-repl"] = false,
+        ["dapui_*"] = false,
+        terminal = false,
+      },
     })
     vim.keymap.set("n", "<leader>co", function()
       require("copilot.suggestion").toggle_auto_trigger()

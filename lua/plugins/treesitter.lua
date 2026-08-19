@@ -6,7 +6,6 @@ return {
   config = function()
     local filetypes = {
       "bash",
-      "tmux",
       "toml",
       "make",
       "c",
